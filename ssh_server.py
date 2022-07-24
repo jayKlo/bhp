@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# Use: python ssh_server.py <IPAddress> <Port>
+# Example: python ssh_server.py 192.168.1.20 2222
 import os
 import paramiko
 import socket
@@ -24,8 +26,8 @@ class Server (paramiko.ServerInterface):
 
 
 if __name__ == '__main__':
-    server = '192.168.1.207'
-    ssh_port = 2222
+    server = sys.argv[1]
+    ssh_port = sys.argv[2]
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
